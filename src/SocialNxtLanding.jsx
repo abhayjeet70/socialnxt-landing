@@ -279,7 +279,7 @@ const FAQS = [
 export default function SocialNxtLanding() {
   const [navOpen, setNavOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLeadForm, setShowLeadForm] = useState(false);
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: P.paper, color: P.ink, overflowX: "clip" }}>
@@ -337,11 +337,8 @@ export default function SocialNxtLanding() {
 
           {/* CTA */}
           <div className="hide-m" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <button onClick={() => setShowLogin(true)} style={{ background: "none", border: "none", fontSize: 14, fontWeight: 600, color: P.ink, cursor: "pointer", padding: "8px 14px" }}>
-              Sign in
-            </button>
             <button className="btn-p"
-              onClick={e => scrollTo(e, "pricing")}
+              onClick={() => setShowLeadForm(true)}
               style={{ background: P.purple, color: "#fff", border: "none", fontSize: 14, fontWeight: 700, padding: "10px 22px", borderRadius: 999, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
               Get started <ArrowRight size={14} />
             </button>
@@ -365,7 +362,7 @@ export default function SocialNxtLanding() {
                 {n.label}
               </a>
             ))}
-            <button onClick={e => { scrollTo(e, "pricing"); setNavOpen(false); }}
+            <button onClick={() => { setShowLeadForm(true); setNavOpen(false); }}
               style={{ marginTop: 8, background: P.purple, color: "#fff", border: "none", padding: 14, borderRadius: 12, fontWeight: 700, cursor: "pointer" }}>
               Get started
             </button>
@@ -395,9 +392,9 @@ export default function SocialNxtLanding() {
 
             <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
               <button className="btn-p"
-                onClick={e => scrollTo(e, "pricing")}
+                onClick={() => setShowLeadForm(true)}
                 style={{ background: P.purple, color: "#fff", border: "none", fontWeight: 700, fontSize: 15, padding: "14px 28px", borderRadius: 999, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
-                Start free <ArrowRight size={16} />
+                Get started <ArrowRight size={16} />
               </button>
               <button onClick={e => scrollTo(e, "how-it-works")}
                 style={{ background: "#fff", color: P.ink, border: `1.5px solid ${P.line}`, fontWeight: 700, fontSize: 15, padding: "14px 28px", borderRadius: 999, cursor: "pointer" }}>
@@ -813,12 +810,9 @@ export default function SocialNxtLanding() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12, position: "relative", zIndex: 2 }}>
               <button className="btn-p"
+                onClick={() => setShowLeadForm(true)}
                 style={{ background: "#fff", color: P.purple, border: "none", fontWeight: 800, fontSize: 15, padding: "18px 32px", borderRadius: 999, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
-                Start free trial <ArrowRight size={16} />
-              </button>
-              <button onClick={() => setShowLogin(true)}
-                style={{ background: "transparent", color: "#C4A8E8", border: "1.5px solid rgba(255,255,255,0.2)", fontWeight: 600, fontSize: 14, padding: "13px 28px", borderRadius: 999, cursor: "pointer" }}>
-                Sign in to your workspace
+                Get started <ArrowRight size={16} />
               </button>
             </div>
           </div>
@@ -865,32 +859,40 @@ export default function SocialNxtLanding() {
         </div>
       </footer>
 
-      {/* ═══ LOGIN MODAL ═══ */}
-      {showLogin && (
+      {/* ═══ LEAD FORM MODAL ═══ */}
+      {showLeadForm && (
         <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(19, 9, 36, 0.4)", backdropFilter: "blur(4px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-          <div className="fadein" style={{ background: "#fff", padding: "40px 32px", borderRadius: 24, width: "100%", maxWidth: 400, boxShadow: "0 24px 64px -16px rgba(107,33,168,0.2)" }}>
+          <div className="fadein" style={{ background: "#fff", padding: "40px 32px", borderRadius: 24, width: "100%", maxWidth: 440, boxShadow: "0 24px 64px -16px rgba(107,33,168,0.2)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-              <h3 className="serif" style={{ fontSize: 24, fontWeight: 800, color: P.ink }}>Welcome back</h3>
-              <button onClick={() => setShowLogin(false)} style={{ background: "none", border: "none", cursor: "pointer", color: P.slate }}>
+              <h3 className="serif" style={{ fontSize: 24, fontWeight: 800, color: P.ink }}>Get Started</h3>
+              <button onClick={() => setShowLeadForm(false)} style={{ background: "none", border: "none", cursor: "pointer", color: P.slate }}>
                 <X size={20} />
               </button>
             </div>
+            <p style={{ fontSize: 14, color: P.slate, marginBottom: 24 }}>
+              Tell us a little about yourself and we'll be in touch shortly.
+            </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: P.slate, marginBottom: 8 }}>Name</label>
+                <input type="text" placeholder="Your Full Name" style={{ width: "100%", padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${P.line}`, fontSize: 15, outline: "none" }} />
+              </div>
               <div>
                 <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: P.slate, marginBottom: 8 }}>Email address</label>
                 <input type="email" placeholder="you@agency.com" style={{ width: "100%", padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${P.line}`, fontSize: 15, outline: "none" }} />
               </div>
               <div>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: P.slate, marginBottom: 8 }}>Password</label>
-                <input type="password" placeholder="••••••••" style={{ width: "100%", padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${P.line}`, fontSize: 15, outline: "none" }} />
+                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: P.slate, marginBottom: 8 }}>Phone Number</label>
+                <input type="tel" placeholder="+91 00000 00000" style={{ width: "100%", padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${P.line}`, fontSize: 15, outline: "none" }} />
+              </div>
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: P.slate, marginBottom: 8 }}>Requirement / Demand</label>
+                <textarea rows="3" placeholder="Tell us what you're looking for..." style={{ width: "100%", padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${P.line}`, fontSize: 15, outline: "none", resize: "vertical" }}></textarea>
               </div>
               <button className="btn-p" style={{ background: P.purple, color: "#fff", border: "none", fontWeight: 700, fontSize: 15, padding: "14px", borderRadius: 12, cursor: "pointer", marginTop: 8 }}>
-                Sign In
+                Submit
               </button>
             </div>
-            <p style={{ textAlign: "center", fontSize: 13, color: P.slate, marginTop: 24 }}>
-              Don't have an account? <span style={{ color: P.purple, fontWeight: 700, cursor: "pointer" }}>Start free</span>
-            </p>
           </div>
         </div>
       )}
