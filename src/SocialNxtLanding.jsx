@@ -16,11 +16,30 @@ import {
   Calendar,
   BarChart3,
   LayoutGrid,
+  Briefcase,
+  Shield,
+  Target,
+  Activity,
+  CheckSquare,
+  GitBranch,
 } from "lucide-react";
 import logo from "./assets/logo.png";
 import calendarImg from "./assets/content-calendar.png";
 import sheetImg from "./assets/content-sheet.png";
 import dashboardImg from "./assets/admin-dashboard.png";
+import salesOnboardingImg from "./assets/sales-onboarding.png";
+import issueResolutionImg from "./assets/social-media-issue.png";
+import contentCreationImg from "./assets/content-creation.png";
+import f1Img from "./assets/1.png";
+import f2Img from "./assets/2.png";
+import f3Img from "./assets/3.png";
+import f4Img from "./assets/4.png";
+import f5Img from "./assets/5.png";
+import f6Img from "./assets/6.png";
+import f7Img from "./assets/7.png";
+import f8Img from "./assets/8.png";
+import f9Img from "./assets/9.png";
+import f10Img from "./assets/10.png";
 
 /* ── Brand Palette ── */
 const P = {
@@ -42,7 +61,7 @@ const P = {
 const NAV = [
   { label: "Product", id: "product" },
   { label: "Features", id: "features" },
-  { label: "How it works", id: "how-it-works" },
+  { label: "Workflows", id: "workflows" },
   { label: "Pricing", id: "pricing" },
 ];
 
@@ -77,12 +96,18 @@ const Yt = ({ s = 20, c = "#fff" }) => (
     <path d="M10.5 9.7v4.6l4-2.3-4-2.3Z" fill={c} />
   </svg>
 );
+const Tk = ({ s = 20, c = "#fff" }) => (
+  <svg width={s} height={s} viewBox="0 0 24 24" fill="none">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l-.03-8.6A8.28 8.28 0 0 0 21 8.41V5a4.85 4.85 0 0 1-1.41 1.69Z" fill={c} />
+  </svg>
+);
 
 const PLATFORMS = [
   { Icon: Ig, label: "Instagram", bg: "linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)" },
   { Icon: Fb, label: "Facebook", bg: "#1877F2" },
   { Icon: Li, label: "LinkedIn", bg: "#0A66C2" },
   { Icon: Yt, label: "YouTube", bg: "#FF0000" },
+  { Icon: Tk, label: "TikTok", bg: "#010101" },
 ];
 
 const MORE_FEATURES = [
@@ -92,6 +117,113 @@ const MORE_FEATURES = [
   { icon: Video, title: "Meetings", copy: "Keep every client review call and internal sync on one shared schedule." },
   { icon: AlertTriangle, title: "Client issues", copy: "Log a complaint or a fire drill once, and never lose track of who's fixing it." },
   { icon: FileText, title: "Reports", copy: "Export a clean monthly report per client without rebuilding it from scratch." },
+];
+
+/* ── All 10 README Features ── */
+const ALL_FEATURES = [
+  {
+    img: f1Img,
+    title: "Client & Contact Management",
+    copy: "Centralized database for all client details, company info and contacts. Track status — Active, Inactive or Lead — and archive churned accounts cleanly.",
+    tag: "CRM",
+  },
+  {
+    img: f2Img,
+    title: "Deal Pipeline",
+    copy: "Kanban and list views of your sales pipeline. Track deal value, expected close dates and current stage. Convert won deals into active client workspaces in one click.",
+    tag: "Sales",
+  },
+  {
+    img: f3Img,
+    title: "Task & Project Management",
+    copy: "Assign tasks to team members or clients with status (To Do, In Progress, Review, Done), priority levels, and due dates for on-time delivery.",
+    tag: "Productivity",
+  },
+  {
+    img: f4Img,
+    title: "Content Calendar",
+    copy: "Plan and visualise content for Instagram, Facebook, LinkedIn, YouTube and TikTok in one shared calendar. See scheduled, pending and posted in a single view.",
+    tag: "Scheduling",
+  },
+  {
+    img: f5Img,
+    title: "Content Approvals Pipeline",
+    copy: "Streamline review between internal teams and clients. Set approval stages, collect sign-offs and publish — no more chasing approvals over WhatsApp.",
+    tag: "Workflow",
+  },
+  {
+    img: f6Img,
+    title: "Meetings & Communication",
+    copy: "Schedule client calls and internal syncs. Log agendas, minutes and participants so nothing from a meeting gets lost.",
+    tag: "Communication",
+  },
+  {
+    img: f7Img,
+    title: "Proposals & Invoicing",
+    copy: "Create professional proposals directly inside SocialNxt and export to PDF for client sharing — no external document tool needed.",
+    tag: "Revenue",
+  },
+  {
+    img: f8Img,
+    title: "Issue Tracking",
+    copy: "Log client complaints or internal bugs as tickets. Assign, track and resolve with a full timestamp trail so nothing falls through the cracks.",
+    tag: "Support",
+  },
+  {
+    img: f9Img,
+    title: "Team & Access Control",
+    copy: "Role-Based Access Control (RBAC) for Admin, Manager and Viewer roles. Invite team members via email and control exactly what each person can see or edit.",
+    tag: "Security",
+  },
+  {
+    img: f10Img,
+    title: "Reports & Activity Logs",
+    copy: "Visual analytics for team productivity and deal conversion, plus a comprehensive audit log capturing who did what and when for full accountability.",
+    tag: "Analytics",
+  },
+];
+
+/* ── Core Workflows from README ── */
+const WORKFLOWS = [
+  {
+    title: "Sales to Onboarding",
+    subtitle: "From first conversation to active client workspace.",
+    icon: Briefcase,
+    color: P.purpleLight,
+    img: salesOnboardingImg,
+    steps: [
+      { n: "01", text: "Add new prospect to the Deals pipeline" },
+      { n: "02", text: "Generate and send a branded Proposal" },
+      { n: "03", text: "Move deal to 'Closed Won' once accepted" },
+      { n: "04", text: "Convert the lead into an active Client workspace with onboarding checklist" },
+    ],
+  },
+  {
+    title: "Content Creation",
+    subtitle: "From idea to published post, with every sign-off in between.",
+    icon: LayoutGrid,
+    color: P.accent,
+    img: contentCreationImg,
+    steps: [
+      { n: "01", text: "Create a Task for the content piece with brief and references" },
+      { n: "02", text: "Creator drafts copy and attaches assets" },
+      { n: "03", text: "Move to 'In Review' for manager and client approval inside SocialNxt" },
+      { n: "04", text: "Schedule approved content to the Calendar for publishing" },
+    ],
+  },
+  {
+    title: "Issue Resolution",
+    subtitle: "Every client complaint gets logged, assigned and resolved.",
+    icon: GitBranch,
+    color: "#F97316",
+    img: issueResolutionImg,
+    steps: [
+      { n: "01", text: "Client or team logs an Issue ticket with full context" },
+      { n: "02", text: "Issue is assigned to the right team member" },
+      { n: "03", text: "Updates are logged on the ticket as work progresses" },
+      { n: "04", text: "Issue marked 'Resolved' — client notified and audit trail saved" },
+    ],
+  },
 ];
 
 const STEPS = [
@@ -123,11 +255,11 @@ const PLANS = [
   },
   {
     name: "Growth", price: "₹4,999", period: "/month", popular: true, tagline: "For growing agencies",
-    features: ["Up to 15 clients", "Full dashboard & reports", "10 team members", "Approvals & client portal", "Priority support"]
+    features: ["Up to 15 clients", "Full CRM & deal pipeline", "Full dashboard & reports", "10 team members", "Approvals & client portal", "Priority support"]
   },
   {
     name: "Agency", price: "Custom", period: "", tagline: "For multi-team agencies",
-    features: ["Unlimited clients", "Custom roles & permissions", "Unlimited team members", "Dedicated onboarding", "SLA-backed support"]
+    features: ["Unlimited clients", "Custom roles & permissions", "Unlimited team members", "Proposals & invoicing", "Dedicated onboarding", "SLA-backed support"]
   },
 ];
 
@@ -136,6 +268,9 @@ const FAQS = [
   { q: "Does SocialNxt post directly to platforms?", a: "SocialNxt is built for planning, approval and reporting across Instagram, Facebook, LinkedIn, YouTube and TikTok. Scheduling handoff to your existing publishing tool is supported today, with direct publishing on our roadmap." },
   { q: "What happens if we outgrow the Starter plan?", a: "You can move to Growth or Agency at any point. Your clients, content sheet history and calendar carry over automatically — nothing needs to be rebuilt." },
   { q: "Is there a limit on team members per client?", a: "No. Team member limits are per-workspace, not per-client, so you can staff a single client with as many collaborators as the plan allows." },
+  { q: "How does Role-Based Access Control work?", a: "SocialNxt supports Admin, Manager and Viewer roles. Admins control the full workspace and billing. Managers can create, edit and approve content. Viewers have read-only access — ideal for clients reviewing their own dashboards without touching anything else." },
+  { q: "Can I track deals and convert them into client projects?", a: "Yes. The Deal Pipeline lets you manage your full sales process from first lead to closed won. Once a deal is marked won, you can convert it into a fully set-up client workspace in one action — all contact details carry over automatically." },
+  { q: "What is captured in the Activity Log?", a: "Every action in SocialNxt — creating tasks, approving content, changing deal stages, sending proposals, updating client info — is recorded with a timestamp and user attribution. This gives you a full audit trail for accountability and transparency with clients." },
 ];
 
 /* ══════════════════════════════════════════════
@@ -155,6 +290,9 @@ export default function SocialNxtLanding() {
         a { text-decoration: none; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
         @keyframes float  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        @keyframes shimmer { 0%{background-position:200% center} 100%{background-position:-200% center} }
+        @keyframes panLeftRight { 0%, 100% { transform: translateX(0%); } 50% { transform: translateX(-20%); } }
+        .pan-image { width: 140%; height: 100%; object-fit: cover; object-position: left top; max-width: none; animation: panLeftRight 15s ease-in-out infinite; transform-origin: left center; }
         .fadein { animation: fadeUp .7s ease both; }
         .float  { animation: float 5s ease-in-out infinite; }
         .hover-lift { transition: transform .2s ease, box-shadow .2s ease; }
@@ -164,12 +302,19 @@ export default function SocialNxtLanding() {
         .nav-a:hover::after { transform:scaleX(1); }
         .btn-p { transition:transform .15s, box-shadow .15s; }
         .btn-p:hover { transform:translateY(-2px); box-shadow:0 14px 28px -8px rgba(107,33,168,0.45); }
+        .feature-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+        .feature-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px -12px rgba(107,33,168,0.18); border-color: ${P.purple} !important; }
+        .workflow-step { transition: background .2s ease; }
         @media(max-width:860px) {
           .hide-m { display:none !important; }
           .hero-cols { grid-template-columns:1fr !important; }
           .grid-3 { grid-template-columns:1fr !important; }
           .grid-2 { grid-template-columns:1fr !important; }
           .bento-grid { grid-template-columns:1fr !important; }
+          .grid-5 { grid-template-columns:repeat(3,1fr) !important; }
+        }
+        @media(max-width:520px) {
+          .grid-5 { grid-template-columns:repeat(2,1fr) !important; }
         }
       `}</style>
 
@@ -240,12 +385,12 @@ export default function SocialNxtLanding() {
             </div>
 
             <h1 className="serif" style={{ fontSize: "clamp(42px,5vw,68px)", lineHeight: 1.1, fontWeight: 900, color: P.ink, letterSpacing: "-1px" }}>
-              The easiest way<br />to <em style={{ color: P.purple, fontStyle: "italic" }}>plan</em> and<br />publish content.
+              The easiest way<br />to <em style={{ color: P.purple, fontStyle: "italic" }}>manage</em> clients<br />and content.
             </h1>
 
             <p style={{ marginTop: 24, fontSize: 17, color: P.slate, lineHeight: 1.7, maxWidth: 460 }}>
-              SocialNxt brings your content calendar, approvals and client reporting
-              into one calm workspace — so nothing gets posted late, or twice.
+              SocialNxt brings your CRM, content calendar, approvals and client reporting
+              into one calm workspace — so nothing gets posted late, lost in email, or handled twice.
             </p>
 
             <div style={{ display: "flex", gap: 12, marginTop: 36, flexWrap: "wrap" }}>
@@ -261,7 +406,7 @@ export default function SocialNxtLanding() {
             </div>
 
             <div style={{ display: "flex", gap: 24, marginTop: 40, flexWrap: "wrap" }}>
-              {["5 platforms in one view", "Real-time approvals", "One very good spreadsheet"].map(t => (
+              {["5 platforms in one view", "Full CRM & pipeline", "Real-time approvals", "Clean monthly reports"].map(t => (
                 <span key={t} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: P.slate, fontWeight: 600 }}>
                   <CheckCircle2 size={15} color={P.purple} /> {t}
                 </span>
@@ -292,7 +437,7 @@ export default function SocialNxtLanding() {
           <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.slate, textTransform: "uppercase", textAlign: "center", marginBottom: 32 }}>
             Works with every platform your clients post on
           </p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+          <div className="grid-5" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 16, maxWidth: 540, margin: "0 auto" }}>
             {PLATFORMS.map(({ Icon, label, bg }) => (
               <div key={label} className="hover-lift" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
                 <div style={{ width: 60, height: 60, borderRadius: 18, background: bg, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 24px -8px rgba(0,0,0,0.28)" }}>
@@ -317,56 +462,53 @@ export default function SocialNxtLanding() {
           </div>
 
           {/* Bento grid */}
-          <div className="bento-grid" style={{ display: "grid", gridTemplateColumns: "1.4fr 1fr 1fr", gridTemplateRows: "auto auto", gap: 16 }}>
-            {/* Content Calendar — tall left */}
-            <div className="hover-lift" style={{ gridRow: "1/3", borderRadius: 24, background: "#fff", overflow: "hidden", border: `1px solid ${P.line}` }}>
-              <div style={{ padding: "28px 28px 0" }}>
-                <div style={{ width: 46, height: 46, borderRadius: 14, background: P.purple, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
-                  <Calendar size={22} color="#fff" />
-                </div>
+          <div className="bento-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            {/* Content Calendar */}
+            <div className="hover-lift" style={{ borderRadius: 24, background: "#fff", overflow: "hidden", border: `1px solid ${P.line}`, display: "flex", flexDirection: "column" }}>
+              <div style={{ width: "100%", overflow: "hidden", height: 260, flexShrink: 0, position: "relative" }}>
+                <img src={calendarImg} alt="Content Calendar" className="pan-image" style={{ display: "block" }} />
+              </div>
+              <div style={{ padding: "28px", flex: 1 }}>
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: P.purple, textTransform: "uppercase" }}>Scheduling</span>
                 <h3 className="serif" style={{ fontSize: 24, fontWeight: 800, color: P.ink, marginTop: 8 }}>Content Calendar</h3>
                 <p style={{ fontSize: 14, color: P.slate, lineHeight: 1.65, marginTop: 10 }}>
                   See every scheduled, posted and pending piece of content across Instagram, Facebook, LinkedIn, YouTube and TikTok — in one shared view.
                 </p>
               </div>
-              <img src={calendarImg} alt="Content Calendar" style={{ width: "100%", display: "block", marginTop: 24, borderBottomLeftRadius: 24, borderBottomRightRadius: 24 }} />
             </div>
 
             {/* Content Sheet */}
-            <div className="hover-lift" style={{ borderRadius: 24, background: P.inkSoft, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
-              <div style={{ padding: "28px 28px 0" }}>
-                <div style={{ width: 46, height: 46, borderRadius: 14, background: P.accent, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
-                  <LayoutGrid size={22} color={P.dark} />
-                </div>
+            <div className="hover-lift" style={{ borderRadius: 24, background: P.inkSoft, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column" }}>
+              <div style={{ width: "100%", overflow: "hidden", height: 260, flexShrink: 0, position: "relative" }}>
+                <img src={sheetImg} alt="Content Sheet" className="pan-image" style={{ display: "block" }} />
+              </div>
+              <div style={{ padding: "28px", flex: 1 }}>
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: P.accent, textTransform: "uppercase" }}>Collaboration</span>
                 <h3 className="serif" style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginTop: 8 }}>Content Sheet</h3>
                 <p style={{ fontSize: 13.5, color: "#C4A8E8", lineHeight: 1.65, marginTop: 10 }}>
                   Track topics, references, captions and final files in one spreadsheet your whole team can co-edit.
                 </p>
               </div>
-              <img src={sheetImg} alt="Content Sheet" style={{ width: "100%", display: "block", marginTop: 24 }} />
             </div>
 
             {/* Admin Dashboard */}
-            <div className="hover-lift" style={{ borderRadius: 24, background: P.purplePale, overflow: "hidden", border: `1.5px solid ${P.line}` }}>
-              <div style={{ padding: "28px 28px 0" }}>
-                <div style={{ width: 46, height: 46, borderRadius: 14, background: P.purpleMid, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
-                  <BarChart3 size={22} color="#fff" />
-                </div>
+            <div className="hover-lift" style={{ borderRadius: 24, background: P.purplePale, overflow: "hidden", border: `1.5px solid ${P.line}`, display: "flex", flexDirection: "column" }}>
+              <div style={{ width: "100%", overflow: "hidden", height: 260, flexShrink: 0, position: "relative" }}>
+                <img src={dashboardImg} alt="Admin Dashboard" className="pan-image" style={{ display: "block" }} />
+              </div>
+              <div style={{ padding: "28px", flex: 1 }}>
                 <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: P.purpleMid, textTransform: "uppercase" }}>Reporting</span>
                 <h3 className="serif" style={{ fontSize: 22, fontWeight: 800, color: P.ink, marginTop: 8 }}>Admin Dashboard</h3>
                 <p style={{ fontSize: 13.5, color: P.slate, lineHeight: 1.65, marginTop: 10 }}>
                   Revenue, team workload, platform mix and pending approvals — one dashboard per agency, always up to date.
                 </p>
               </div>
-              <img src={dashboardImg} alt="Admin Dashboard" style={{ width: "100%", display: "block", marginTop: 24 }} />
             </div>
 
-            {/* Stat card */}
-            <div style={{ borderRadius: 24, background: P.purple, padding: "28px 32px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+            {/* Stat card (Extended for uniformity) */}
+            <div style={{ gridColumn: "1 / -1", borderRadius: 24, background: P.purple, padding: "24px 32px", display: "flex", alignItems: "center", justifyContent: "center", gap: 24 }}>
               <p style={{ fontSize: 52, fontWeight: 900, color: "#fff", lineHeight: 1 }}>5</p>
-              <p style={{ fontSize: 15, color: "#E9D5FF", marginTop: 8 }}>platforms tracked in one calendar</p>
+              <p style={{ fontSize: 20, color: "#E9D5FF", fontWeight: 600 }}>platforms tracked in one unified calendar.</p>
             </div>
           </div>
 
@@ -386,6 +528,39 @@ export default function SocialNxtLanding() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ FULL FEATURE SUITE ═══ */}
+      <section id="all-features" style={{ padding: "90px 24px", background: P.purpleFaint }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 56px" }}>
+            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.purple, textTransform: "uppercase" }}>Full feature suite</span>
+            <h2 className="serif" style={{ fontSize: "clamp(30px,4vw,46px)", fontWeight: 900, color: P.ink, lineHeight: 1.15, marginTop: 14, letterSpacing: "-0.5px" }}>
+              Ten features.<br /><em style={{ color: P.purple, fontStyle: "italic" }}>One platform.</em> Zero tab overload.
+            </h2>
+            <p style={{ color: P.slate, marginTop: 14, fontSize: 15.5, lineHeight: 1.7 }}>
+              Every tool your agency needs to manage clients, content, deals and your team —
+              built to work together, not in silos.
+            </p>
+          </div>
+
+          <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
+            {ALL_FEATURES.map(f => (
+              <div key={f.title} className="feature-card" style={{ display: "flex", gap: 24, padding: "26px 28px", borderRadius: 20, background: "#fff", border: `1.5px solid ${P.line}`, cursor: "default", alignItems: "center" }}>
+                <div style={{ width: 140, flexShrink: 0 }}>
+                  <img src={f.img} alt={f.title} style={{ width: "100%", display: "block", objectFit: "contain" }} />
+                </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
+                    <h4 style={{ fontSize: 15.5, fontWeight: 700, color: P.ink }}>{f.title}</h4>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1, color: P.purple, textTransform: "uppercase", background: P.purplePale, padding: "3px 9px", borderRadius: 999, whiteSpace: "nowrap" }}>{f.tag}</span>
+                  </div>
+                  <p style={{ fontSize: 13.5, color: P.slate, lineHeight: 1.65 }}>{f.copy}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -420,22 +595,67 @@ export default function SocialNxtLanding() {
         </div>
       </section>
 
+      {/* ═══ CORE WORKFLOWS ═══ */}
+      <section id="workflows" style={{ background: P.dark, padding: "90px 24px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", maxWidth: 640, margin: "0 auto 52px" }}>
+            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.accent, textTransform: "uppercase" }}>Core workflows</span>
+            <h2 className="serif" style={{ fontSize: "clamp(30px,4vw,46px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginTop: 14, letterSpacing: "-0.5px" }}>
+              Three workflows your agency<br /><em style={{ color: P.accent, fontStyle: "italic" }}>runs on every day.</em>
+            </h2>
+            <p style={{ color: "#9D8BB0", marginTop: 14, fontSize: 15, lineHeight: 1.7 }}>
+              SocialNxt connects every part of your operation — from closing a deal to delivering the report.
+            </p>
+          </div>
+
+          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
+            {WORKFLOWS.map(w => (
+              <div key={w.title} className="hover-lift" style={{ borderRadius: 24, background: P.darkCard, border: "1px solid rgba(255,255,255,0.08)", padding: "32px 28px", display: "flex", flexDirection: "column" }}>
+                {/* Optional Image at Top */}
+                {w.img && (
+                  <div style={{ marginBottom: 24, borderRadius: 16, overflow: "hidden", border: `1px solid ${w.color}40`, boxShadow: `0 8px 32px -8px ${w.color}25` }}>
+                    <img src={w.img} alt={w.title} style={{ width: "100%", height: 200, objectFit: "cover", display: "block" }} />
+                  </div>
+                )}
+
+                {/* Title */}
+                <h3 className="serif" style={{ fontSize: 21, fontWeight: 800, color: "#fff", marginBottom: 6 }}>{w.title}</h3>
+                <p style={{ fontSize: 13, color: "#9D8BB0", lineHeight: 1.55, marginBottom: 26 }}>{w.subtitle}</p>
+
+                {/* Steps */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  {w.steps.map((step, i) => (
+                    <div key={i} className="workflow-step" style={{ display: "flex", gap: 14, alignItems: "flex-start", padding: "10px 14px", borderRadius: 12, background: "rgba(255,255,255,0.04)" }}>
+                      <span style={{ width: 28, height: 28, borderRadius: "50%", background: `${w.color}20`, border: `1.5px solid ${w.color}50`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, color: w.color, flexShrink: 0, fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.5px" }}>
+                        {step.n}
+                      </span>
+                      <p style={{ fontSize: 13.5, color: "#C4A8E8", lineHeight: 1.55, paddingTop: 5 }}>{step.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ═══ TEAM / STATS ═══ */}
-      <section id="team" style={{ background: P.dark, padding: "90px 24px" }}>
+      <section id="team" style={{ background: P.paper, padding: "90px 24px" }}>
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 48, alignItems: "center" }} className="hero-cols">
             <div>
-              <h2 className="serif" style={{ fontSize: "clamp(32px,4vw,50px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.5px" }}>
-                Built for teams juggling<br /><em style={{ color: P.accent, fontStyle: "italic" }}>more clients</em><br />than hours in the day.
+              <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.purple, textTransform: "uppercase" }}>Your team</span>
+              <h2 className="serif" style={{ fontSize: "clamp(32px,4vw,50px)", fontWeight: 900, color: P.ink, lineHeight: 1.15, letterSpacing: "-0.5px", marginTop: 14 }}>
+                Built for teams juggling<br /><em style={{ color: P.purple, fontStyle: "italic" }}>more clients</em><br />than hours in the day.
               </h2>
-              <p style={{ color: "#C4A8E8", marginTop: 20, fontSize: 15.5, lineHeight: 1.7, maxWidth: 460 }}>
+              <p style={{ color: P.slate, marginTop: 20, fontSize: 15.5, lineHeight: 1.7, maxWidth: 460 }}>
                 Strategists, designers, editors and account managers all work from the same content sheet — so nothing lives in someone's DMs.
               </p>
               <div style={{ display: "flex", marginTop: 32, alignItems: "center", gap: 4 }}>
                 {["P", "R", "M", "K"].map((l, i) => (
-                  <div key={l} style={{ width: 44, height: 44, borderRadius: "50%", background: [P.purple, P.purpleLight, P.accent, "#22C55E"][i], display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700, fontSize: 14, border: `3px solid ${P.dark}`, marginLeft: i === 0 ? 0 : -10 }}>{l}</div>
+                  <div key={l} style={{ width: 44, height: 44, borderRadius: "50%", background: [P.purple, P.purpleLight, P.accent, "#22C55E"][i], display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700, fontSize: 14, border: `3px solid ${P.paper}`, marginLeft: i === 0 ? 0 : -10 }}>{l}</div>
                 ))}
-                <span style={{ color: "#9D8BB0", fontSize: 13, marginLeft: 14 }}>Strategy, design, edit & review — together</span>
+                <span style={{ color: P.slate, fontSize: 13, marginLeft: 14 }}>Strategy, design, edit & review — together</span>
               </div>
             </div>
 
@@ -444,11 +664,12 @@ export default function SocialNxtLanding() {
                 { n: "100%", l: "content approval visibility" },
                 { n: "+18%", l: "avg. revenue growth for agencies" },
                 { n: "5", l: "platforms tracked in one calendar" },
+                { n: "10×", l: "faster client onboarding" },
               ].map(s => (
                 <div key={s.l} className="hover-lift"
-                  style={{ background: P.darkCard, borderRadius: 20, padding: "22px 24px", display: "flex", alignItems: "center", gap: 20, border: "1px solid rgba(255,255,255,0.07)" }}>
-                  <span className="serif" style={{ fontSize: 36, fontWeight: 900, color: P.accent, minWidth: 80 }}>{s.n}</span>
-                  <span style={{ color: "#DDD6FE", fontSize: 14 }}>{s.l}</span>
+                  style={{ background: P.purplePale, borderRadius: 20, padding: "22px 24px", display: "flex", alignItems: "center", gap: 20, border: `1.5px solid ${P.line}` }}>
+                  <span className="serif" style={{ fontSize: 36, fontWeight: 900, color: P.purple, minWidth: 80 }}>{s.n}</span>
+                  <span style={{ color: P.ink, fontSize: 14 }}>{s.l}</span>
                 </div>
               ))}
             </div>
@@ -457,25 +678,31 @@ export default function SocialNxtLanding() {
       </section>
 
       {/* ═══ TESTIMONIALS ═══ */}
-      <section style={{ padding: "90px 24px", background: P.purpleFaint }}>
+      <section style={{ padding: "90px 24px", background: P.dark }}>
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.purple, textTransform: "uppercase" }}>What agencies say</span>
-            <h2 className="serif" style={{ fontSize: "clamp(30px,4vw,46px)", fontWeight: 900, color: P.ink, lineHeight: 1.15, marginTop: 14, letterSpacing: "-0.5px" }}>
-              Fewer spreadsheets.<br /><em style={{ color: P.purple, fontStyle: "italic" }}>Fewer surprises</em> at review time.
+            <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: 2, color: P.accent, textTransform: "uppercase" }}>What agencies say</span>
+            <h2 className="serif" style={{ fontSize: "clamp(30px,4vw,46px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, marginTop: 14, letterSpacing: "-0.5px" }}>
+              Fewer spreadsheets.<br /><em style={{ color: P.accent, fontStyle: "italic" }}>Fewer surprises</em> at review time.
             </h2>
           </div>
 
           <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
             {TESTIMONIALS.map((t, i) => (
               <div key={t.name} className="hover-lift"
-                style={{ borderRadius: 24, border: `1.5px solid ${P.line}`, padding: "28px 26px", background: "#fff", display: "flex", flexDirection: "column", gap: 20 }}>
-                <p style={{ fontSize: 15, color: P.ink, lineHeight: 1.7, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
+                style={{ borderRadius: 24, border: "1px solid rgba(255,255,255,0.1)", padding: "28px 26px", background: P.darkCard, display: "flex", flexDirection: "column", gap: 20 }}>
+                {/* Stars */}
+                <div style={{ display: "flex", gap: 3 }}>
+                  {[...Array(5)].map((_, j) => (
+                    <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill={P.accent}><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
+                  ))}
+                </div>
+                <p style={{ fontSize: 15, color: "#E2D9F3", lineHeight: 1.7, flex: 1 }}>&ldquo;{t.quote}&rdquo;</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <div style={{ width: 44, height: 44, borderRadius: "50%", background: t.color, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700, fontSize: 13 }}>{t.initials}</div>
                   <div>
-                    <p style={{ fontSize: 14, fontWeight: 700, color: P.ink }}>{t.name}</p>
-                    <p style={{ fontSize: 12.5, color: P.slate }}>{t.role}</p>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>{t.name}</p>
+                    <p style={{ fontSize: 12.5, color: "#9D8BB0" }}>{t.role}</p>
                   </div>
                 </div>
               </div>
@@ -573,16 +800,27 @@ export default function SocialNxtLanding() {
 
             <div style={{ position: "relative", zIndex: 2, maxWidth: 520 }}>
               <h2 className="serif" style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.5px" }}>
-                Ready to bring your<br /><em style={{ color: P.accent, fontStyle: "italic" }}>content calendar</em> together?
+                Ready to bring your entire<br /><em style={{ color: P.accent, fontStyle: "italic" }}>agency workflow</em> into one place?
               </h2>
               <p style={{ color: "#C4A8E8", marginTop: 14, fontSize: 15 }}>
                 Set up your first client workspace in under five minutes. No credit card needed.
               </p>
+              <div style={{ display: "flex", gap: 8, marginTop: 28, flexWrap: "wrap" }}>
+                {["CRM & pipeline", "Content calendar", "Approvals", "Reporting"].map(chip => (
+                  <span key={chip} style={{ fontSize: 12, fontWeight: 600, color: P.accent, background: "rgba(192,132,252,0.15)", border: "1px solid rgba(192,132,252,0.25)", padding: "5px 13px", borderRadius: 999 }}>{chip}</span>
+                ))}
+              </div>
             </div>
-            <button className="btn-p"
-              style={{ background: "#fff", color: P.purple, border: "none", fontWeight: 800, fontSize: 15, padding: "18px 32px", borderRadius: 999, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, position: "relative", zIndex: 2 }}>
-              Start free trial <ArrowRight size={16} />
-            </button>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, position: "relative", zIndex: 2 }}>
+              <button className="btn-p"
+                style={{ background: "#fff", color: P.purple, border: "none", fontWeight: 800, fontSize: 15, padding: "18px 32px", borderRadius: 999, cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}>
+                Start free trial <ArrowRight size={16} />
+              </button>
+              <button onClick={() => setShowLogin(true)}
+                style={{ background: "transparent", color: "#C4A8E8", border: "1.5px solid rgba(255,255,255,0.2)", fontWeight: 600, fontSize: 14, padding: "13px 28px", borderRadius: 999, cursor: "pointer" }}>
+                Sign in to your workspace
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -594,24 +832,28 @@ export default function SocialNxtLanding() {
             <div>
               <img src={logo} alt="SocialNxt" style={{ height: 36 }} />
               <p style={{ fontSize: 13.5, color: P.slate, marginTop: 16, maxWidth: 260, lineHeight: 1.7 }}>
-                One workspace for content calendars, approvals and client reporting — built for agency teams.
+                One workspace for CRM, content calendars, approvals and client reporting — built for agency teams.
               </p>
             </div>
             <div>
               <p style={{ fontSize: 11, fontWeight: 700, color: P.slate, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 16 }}>Product</p>
-              {["Content Calendar", "Content Sheet", "Admin Dashboard", "Pricing"].map(l => (
+              {["Content Calendar", "Content Sheet", "Deal Pipeline", "Task Management", "Proposals", "Reports & Logs"].map(l => (
                 <p key={l} style={{ fontSize: 13.5, color: P.ink, marginTop: 10, cursor: "pointer" }}>{l}</p>
               ))}
             </div>
             <div>
               <p style={{ fontSize: 11, fontWeight: 700, color: P.slate, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 16 }}>Company</p>
-              {["About", "Careers", "Contact"].map(l => (
+              {["About", "Careers", "Contact", "Pricing"].map(l => (
                 <p key={l} style={{ fontSize: 13.5, color: P.ink, marginTop: 10, cursor: "pointer" }}>{l}</p>
               ))}
             </div>
             <div>
               <p style={{ fontSize: 11, fontWeight: 700, color: P.slate, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 16 }}>Legal</p>
-              {["Privacy", "Terms"].map(l => (
+              {["Privacy", "Terms", "Security"].map(l => (
+                <p key={l} style={{ fontSize: 13.5, color: P.ink, marginTop: 10, cursor: "pointer" }}>{l}</p>
+              ))}
+              <p style={{ fontSize: 11, fontWeight: 700, color: P.slate, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 16, marginTop: 28 }}>Platforms</p>
+              {["Instagram", "Facebook", "LinkedIn", "YouTube", "TikTok"].map(l => (
                 <p key={l} style={{ fontSize: 13.5, color: P.ink, marginTop: 10, cursor: "pointer" }}>{l}</p>
               ))}
             </div>
